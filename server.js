@@ -61,10 +61,21 @@ function send(res, status, file, extraHeaders) {
 
 const server = http.createServer((req, res) => {
   if (req.method !== 'GET' && req.method !== 'HEAD') { res.writeHead(405, SECURITY); return res.end(); }
-  const url = req.url || '/';
+  let url = req.url || '/';
 
   if (url === '/healthz') { res.writeHead(200, Object.assign({ 'Content-Type': 'application/json' }, SECURITY)); return res.end('{"ok":true}'); }
 
+  // --- LANGUAGE ROUTING OVERRIDE ---
+  // If user visits the root domain, silently serve the English version
+  if (url === '/' || url === '/index.html') {
+    url = '/en/';
+  } 
+  // If user clicks the Bahasa toggle (aiqu.my/id), silently serve the root Bahasa version
+  else if (url === '/id' || url === '/id/') {
+    url = '/index.html';
+  }
+  // ---------------------------------
+  
   // /en -> /en/ so relative files (Chat.dc.html) load from /en/
   if (url.split('?')[0] === '/en') { res.writeHead(301, { Location: '/en/' }); return res.end(); }
 
