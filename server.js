@@ -35,6 +35,19 @@ function resolveFile(urlPath) {
   return null;
 }
 
+const GCAL_URL = (process.env.GCAL_URL || '').trim();
+
+// Booking pages: put the Google Calendar booking link in place, or show the email fallback.
+function bookingHtml(file) {
+  let html = fs.readFileSync(file, 'utf8');
+  if (GCAL_URL.startsWith('https://')) {
+    html = html.replace(/<!--NOCAL-->[\s\S]*?<!--\/NOCAL-->/g, '').split('__GCAL_URL__').join(GCAL_URL.replace(/"/g, '&quot;'));
+  } else {
+    html = html.replace(/<!--CAL-->[\s\S]*?<!--\/CAL-->/g, '');
+  }
+  return html.replace(/<!--\/?(NO)?CAL-->/g, '');
+}
+
 function send(res, status, file, extraHeaders) {
   const ext = path.extname(file).toLowerCase();
   const isHtml = ext === '.html';
@@ -42,6 +55,7 @@ function send(res, status, file, extraHeaders) {
     'Content-Type': TYPES[ext] || 'application/octet-stream',
     'Cache-Control': isHtml || file.endsWith('.dc.html') ? 'no-cache' : 'public, max-age=86400'
   }, SECURITY, extraHeaders || {}));
+  if (path.basename(file) === 'book-a-demo.html') return res.end(bookingHtml(file));
   fs.createReadStream(file).pipe(res);
 }
 

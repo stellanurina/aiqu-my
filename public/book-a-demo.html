@@ -34,7 +34,7 @@ h1,h2,h3{font-family:'Schibsted Grotesk','Helvetica Neue',sans-serif;letter-spac
 .f{display:flex;flex-direction:column;gap:6px}
 .f label{font-size:13.5px;font-weight:500}
 .f input,.f textarea{font:15px 'IBM Plex Sans',sans-serif;padding:11px 13px;border:1px solid #CDD2CA;border-radius:6px;background:#fff;color:#141D26}
-@media (max-width: 860px){.split{grid-template-columns:minmax(0,1fr) !important}.wrap{padding-left:16px !important;padding-right:16px !important}.hdr{padding:12px 16px !important}.hdr nav{overflow-x:auto;max-width:100%}.days{grid-template-columns:repeat(3,minmax(0,1fr)) !important}.g2{grid-template-columns:minmax(0,1fr) !important}}
+@media (max-width: 860px){iframe{height:640px !important}.split{grid-template-columns:minmax(0,1fr) !important}.wrap{padding-left:16px !important;padding-right:16px !important}.hdr{padding:12px 16px !important}.hdr nav{overflow-x:auto;max-width:100%}.days{grid-template-columns:repeat(3,minmax(0,1fr)) !important}.g2{grid-template-columns:minmax(0,1fr) !important}}
 @media (max-width: 760px){.hdr nav .nl:first-child{display:none}.hdr .wm small{display:none}.hdr{gap:10px !important}.hdr nav .btn{padding:8px 12px !important;font-size:13.5px !important}}
 @media (max-width: 760px){.hdr nav .px{display:none}}
 </style>
@@ -59,38 +59,11 @@ h1,h2,h3{font-family:'Schibsted Grotesk','Helvetica Neue',sans-serif;letter-spac
 <span style="color: #4A5560; font-size: 15px">Belum siap menjadwalkan? Kirim email ke <a href="mailto:discover@aiqu.my">discover@aiqu.my</a></span>
 </div>
 
-<section style="background: #fff; border: 1px solid #CDD2CA; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 22px">
-<sc-if value="{{notDone}}" hint-placeholder-val="{{true}}">
-<div style="display: flex; flex-direction: column; gap: 10px"><span class="lbl">1 · Topik apa?</span>
-<div class="g2" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px"><sc-for list="{{topics}}" as="t" hint-placeholder-count="3"><button class="opt" onClick="{{t.pick}}" style="background: {{t.bg}}; color: {{t.fg}}; border-color: {{t.bd}}"><b style="font-size: 14.5px">{{t.label}}</b><span style="font-size: 12.5px; opacity: .8">{{t.sub}}</span></button></sc-for></div>
-</div>
-<div style="display: flex; flex-direction: column; gap: 10px"><span class="lbl">2 · Pilih hari</span>
-<div class="days" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px"><sc-for list="{{days}}" as="d" hint-placeholder-count="5"><button class="day" onClick="{{d.pick}}" style="background: {{d.bg}}; color: {{d.fg}}; border-color: {{d.bd}}"><span style="font-size: 12px; opacity: .8">{{d.dow}}</span><b style="font-size: 17px">{{d.date}}</b></button></sc-for></div>
-</div>
-<div style="display: flex; flex-direction: column; gap: 10px"><span class="lbl">3 · Pilih waktu · WIB (Jakarta)</span>
-<div class="days" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px"><sc-for list="{{slots}}" as="s" hint-placeholder-count="5"><button class="slot" onClick="{{s.pick}}" disabled="{{s.off}}" style="background: {{s.bg}}; color: {{s.fg}}; border-color: {{s.bd}}; opacity: {{s.op}}">{{s.t}}</button></sc-for></div>
-</div>
-<div style="display: flex; flex-direction: column; gap: 12px"><span class="lbl">4 · Tentang Anda</span>
-<div class="g2" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
-<div class="f"><label for="bn">Nama Anda</label><input id="bn" value="{{name}}" onChange="{{setName}}"></div>
-<div class="f"><label for="bc">Perusahaan</label><input id="bc" value="{{company}}" onChange="{{setCompany}}"></div>
-<div class="f" style="grid-column: 1 / -1"><label for="be">Email kantor</label><input id="be" type="email" value="{{email}}" onChange="{{setEmail}}" placeholder="nama@perusahaan.co.id"></div>
-<div class="f" style="grid-column: 1 / -1"><label for="bw">Ada yang perlu kami ketahui? (opsional)</label><textarea id="bw" rows="3" value="{{note}}" onChange="{{setNote}}"></textarea></div>
-</div>
-</div>
-<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; border-top: 1px solid #E1E4DD; padding-top: 18px">
-<span style="font-size: 14px; color: #4A5560">{{summary}}</span>
-<button class="btn p" onClick="{{book}}" disabled="{{notReady}}" style="opacity: {{op}}">Jadwalkan panggilan</button>
-</div>
-</sc-if>
-<sc-if value="{{done}}" hint-placeholder-val="{{false}}">
-<div style="display: flex; flex-direction: column; gap: 14px; padding: 24px 0">
-<span style="width: 52px; height: 52px; border-radius: 50%; background: #1F7A4A; display: grid; place-items: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
-<h2 style="font-size: 32px; font-weight: 800">Hampir selesai.</h2>
-<p style="margin: 0; color: #4A5560; font-size: 16px">{{confirm}} Aplikasi email Anda akan terbuka dengan detail ini. Tekan kirim, dan Stella akan mengonfirmasi waktunya ke <b style="color: #141D26">{{email}}</b> dalam satu hari kerja. Jika aplikasi email tidak terbuka, kirim email ke <a href="mailto:discover@aiqu.my">discover@aiqu.my</a>.</p>
-<div style="display: flex; gap: 10px; flex-wrap: wrap"><a class="btn s" href="/intel">Baca Intel sambil menunggu</a><button class="btn s" onClick="{{reset}}">Ubah waktu</button></div>
-</div>
-</sc-if>
+<section style="background: #fff; border: 1px solid #CDD2CA; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 12px; min-width: 0">
+<span class="lbl">Pilih waktu yang cocok · WIB (Jakarta)</span>
+<!--CAL--><iframe src="__GCAL_URL__" title="Jadwal Stella" loading="lazy" style="border: 0; width: 100%; height: 720px; border-radius: 8px; background: #FBFBF8"></iframe>
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 14px; color: #4A5560"><span>Setelah Anda memilih waktu, undangan kalender dengan tautan video langsung dikirim ke email Anda.</span><a href="__GCAL_URL__" target="_blank" rel="noopener">Buka kalender di tab baru ↗</a></div><!--/CAL-->
+<!--NOCAL--><div style="display: flex; flex-direction: column; gap: 10px; padding: 24px 4px"><h2 style="font-size: 26px; font-weight: 800">Kalender sedang disiapkan.</h2><p style="margin: 0; color: #4A5560">Sementara itu, kirim email dengan nama perusahaan dan dua pilihan waktu. Stella akan mengonfirmasi dalam satu hari kerja.</p><a class="btn p" href="mailto:discover@aiqu.my?subject=Permintaan%20demo%20aiqu." style="align-self: flex-start">Kirim email ke Stella</a></div><!--/NOCAL-->
 </section>
 </main>
 <footer class="wrap" style="max-width: 1200px; margin: 0 auto; padding: 28px 40px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 14px; color: #4A5560; border-top: 1px solid #CDD2CA"><span class="wm" style="font-size: 18px">aiqu<span class="d">.</span></span><span>Jakarta, Indonesia · aiqu.my · <a href="/intel-data-protection-faq" style="color: #4A5560">Pelindungan data</a> · <a href="/book-a-demo" style="color: #4A5560">Jadwalkan demo</a></span></footer>
@@ -99,30 +72,7 @@ h1,h2,h3{font-family:'Schibsted Grotesk','Helvetica Neue',sans-serif;letter-spac
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1500}}'>
 class Component extends DCLogic {
-constructor(props) { super(props); this.state = { topic: 'demo', day: 1, slot: null, name: '', company: '', email: '', note: '', done: false }; }
-renderVals() {
-const st = this.state;
-const on = (x) => ({ bg: x ? '#2340E8' : '#fff', fg: x ? '#fff' : '#141D26', bd: x ? '#2340E8' : '#CDD2CA' });
-const T = [['demo', 'Demo singkat', 'Contoh dashboard dan kamera Anda', 30], ['pricing', 'Harga', 'Tambah kamera, hari, atau lokasi', 30], ['custom', 'Sistem khusus', 'ERP, rantai pasok, armada', 60]];
-const topics = T.map((t) => Object.assign({ label: t[1], sub: t[2], pick: () => this.setState({ topic: t[0] }) }, on(st.topic === t[0])));
-const D = [['Rab', '7 Okt'], ['Kam', '8 Okt'], ['Jum', '9 Okt'], ['Sen', '12 Okt'], ['Sel', '13 Okt']];
-const days = D.map((d, i) => Object.assign({ dow: d[0], date: d[1], pick: () => this.setState({ day: i, slot: null }) }, on(st.day === i)));
-const taken = [[1], [0, 3], [], [2, 4], [1]];
-const S = ['09:00', '10:30', '13:00', '14:30', '16:00'];
-const slots = S.map((t, i) => { const off = taken[st.day].indexOf(i) >= 0; const c = on(st.slot === i); return { t: t, off: off, op: off ? 0.35 : 1, bg: c.bg, fg: c.fg, bd: c.bd, pick: () => { if (!off) this.setState({ slot: i }); } }; });
-const set = (k) => (e) => { const o = {}; o[k] = e.target.value; this.setState(o); };
-const ready = st.slot !== null && st.name.trim() && st.company.trim() && /.+@.+\..+/.test(st.email);
-const when = D[st.day][0] + ' ' + D[st.day][1] + (st.slot !== null ? ', ' + S[st.slot] + ' WIB' : '');
-const tp = T.filter((t) => t[0] === st.topic)[0]; const topic = tp[1];
-return {
-topics: topics, days: days, slots: slots, name: st.name, company: st.company, email: st.email, note: st.note,
-setName: set('name'), setCompany: set('company'), setEmail: set('email'), setNote: set('note'),
-summary: st.slot === null ? 'Pilih waktu untuk melanjutkan.' : topic + ' · ' + when + ' · ' + tp[3] + ' menit bersama Stella',
-notReady: !ready, op: ready ? 1 : 0.45, done: st.done, notDone: !st.done,
-book: () => { if (!ready) return; const body = 'Topik: ' + topic + '\nWaktu: ' + when + '\nNama: ' + st.name + '\nPerusahaan: ' + st.company + '\nEmail: ' + st.email + (st.note ? '\nCatatan: ' + st.note : ''); try { window.location.href = 'mailto:discover@aiqu.my?subject=' + encodeURIComponent('Permintaan demo: ' + st.company + ', ' + when) + '&body=' + encodeURIComponent(body); } catch (e) {} this.setState({ done: true }); }, reset: () => this.setState({ done: false }),
-confirm: topic + ' bersama Stella, ' + when + '.'
-};
-}
+renderVals() { return {}; }
 }
 </script>
 </body>
