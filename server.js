@@ -51,9 +51,12 @@ const server = http.createServer((req, res) => {
 
   if (url === '/healthz') { res.writeHead(200, Object.assign({ 'Content-Type': 'application/json' }, SECURITY)); return res.end('{"ok":true}'); }
 
+  // /en -> /en/ so relative files (Chat.dc.html) load from /en/
+  if (url.split('?')[0] === '/en') { res.writeHead(301, { Location: '/en/' }); return res.end(); }
+
   // Old links: /index.html -> /, /use-cases.html -> /use-cases
   const clean = url.split('?')[0];
-  if (clean === '/index.html') { res.writeHead(301, { Location: '/' }); return res.end(); }
+  if (clean === '/index.html' || clean === '/en/index.html') { res.writeHead(301, { Location: clean.replace('index.html', '') }); return res.end(); }
   if (clean.endsWith('.html') && !clean.endsWith('.dc.html')) { res.writeHead(301, { Location: clean.slice(0, -5) }); return res.end(); }
 
   const file = resolveFile(url);

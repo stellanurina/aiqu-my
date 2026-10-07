@@ -1,12 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html lang="id">
 <head>
 <meta charset="utf-8">
+<link rel="alternate" hreflang="id" href="https://aiqu.my/intel-food-tray">
+<link rel="alternate" hreflang="en" href="https://aiqu.my/en/intel-food-tray">
+<link rel="alternate" hreflang="x-default" href="https://aiqu.my/intel-food-tray">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="In canteens and food courts, the cashier reads a full tray at a glance and keys it in under pressure. A camera above the till can do the reading.">
+<meta name="description" content="Di kantin dan food court, kasir harus membaca isi nampan penuh dalam sekejap dan menginputnya di bawah tekanan. Kamera di atas kasir bisa mengambil alih tugas membaca itu.">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <meta property="og:site_name" content="aiqu.">
-<title>Why cashiers miskey orders, and how a camera fixes it. · aiqu.</title>
+<title>Mengapa kasir salah input pesanan, dan bagaimana kamera mengatasinya. · aiqu.</title>
 <script src="/support.js"></script>
 </head>
 <body>
@@ -41,34 +44,34 @@ h1,h2,h3{font-family:'Schibsted Grotesk','Helvetica Neue',sans-serif;letter-spac
 <div style="background: linear-gradient(180deg, #E9EDFE 0px, #FBFBF8 560px) #FBFBF8; color: #141D26; font-family: 'IBM Plex Sans','Segoe UI',system-ui,sans-serif; font-size: 16px; line-height: 1.6">
 <header class="hdr" style="position: sticky; top: 0; z-index: 40; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding: 14px 40px; border-bottom: 1px solid rgba(20,29,38,.08); background: rgba(255,255,255,.72); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px)">
 <a class="wm" href="/">aiqu<span class="d">.</span><small>STORE ANALYTICS</small></a>
-<nav aria-label="Main" style="display: flex; gap: 4px; align-items: center"><a class="nl" href="/#how">How it works</a><a class="nl" href="/use-cases">Use cases</a><a class="nl" href="/intel" style="box-shadow: inset 0 -2px 0 #2340E8">Intel</a><a class="nl px" href="/#pricing">Pricing</a><a class="btn p" href="/book-a-demo" style="min-height: 40px; padding: 8px 16px; white-space: nowrap">Ask for a quick demo</a></nav>
+<nav aria-label="Menu utama" style="display: flex; gap: 4px; align-items: center"><a class="nl" href="/#how">Cara kerja</a><a class="nl" href="/use-cases">Penerapan</a><a class="nl" href="/intel" style="box-shadow: inset 0 -2px 0 #2340E8">Intel</a><a class="nl px" href="/#pricing">Harga</a><a class="lng" href="/en/intel-food-tray" hreflang="en" lang="en" aria-label="Read this page in English" style="font: 500 12.5px 'IBM Plex Mono',monospace; letter-spacing: .06em; color: #1A2FB0; border: 1px solid #D3DAFB; background: #EEF1FE; border-radius: 999px; padding: 6px 10px; text-decoration: none; margin: 0 4px; white-space: nowrap">EN</a><a class="btn p" href="/book-a-demo" style="min-height: 40px; padding: 8px 16px; white-space: nowrap">Minta demo singkat</a></nav>
 </header>
 <main class="wrap" style="max-width: 1200px; margin: 0 auto; padding: 48px 40px 80px; display: flex; flex-direction: column; gap: 40px">
-<nav aria-label="Breadcrumb" class="lbl" style="display: flex; gap: 10px; flex-wrap: wrap"><a href="/intel" style="text-decoration: none">← All Intel</a><span aria-hidden="true">·</span><a href="/use-cases" style="text-decoration: none">Use cases</a></nav>
+<nav aria-label="Jejak navigasi" class="lbl" style="display: flex; gap: 10px; flex-wrap: wrap"><a href="/intel" style="text-decoration: none">← Semua Intel</a><span aria-hidden="true">·</span><a href="/use-cases" style="text-decoration: none">Penerapan</a></nav>
 <article class="art" style="max-width: 720px; display: flex; flex-direction: column; gap: 20px">
-<span class="lbl">F&amp;B · 3 min read</span>
-<h1 style="font-size: 46px; font-weight: 800">Why cashiers miskey orders, and how a camera fixes it.</h1>
-<p style="font-size: 20px; color: #4A5560">In canteens and food courts, the cashier reads a full tray at a glance and keys it in under pressure. A camera above the till can do the reading.</p>
-<span style="font-size: 14.5px; color: #4A5560; border-bottom: 1px solid #CDD2CA; padding-bottom: 20px">By Stella Nurina Susanto · October 2026</span>
-<div class="ucbox"><span class="lbl">Use case</span><span style="display: flex; gap: 8px; flex-wrap: wrap"><a class="ucl" href="/use-cases#uc-tray">Food tray recognition →</a></span></div>
-<p>Anyone who has run a self-service canteen, a food court stall or a nasi campur counter knows the moment. A customer slides a full tray to the till, the line behind them is growing, and the cashier has a few seconds to recognise every dish and find each one on the POS screen.</p>
-<p>Most of the time it works. But under pressure, mistakes go both ways. Undercharging quietly costs revenue. Overcharging costs trust, and arguments at the till slow the line further.</p>
-<h2>The root cause isn't the cashier</h2>
-<p>The task itself is hard: many similar-looking dishes, menus that change, new staff learning item codes, and the busiest moments landing exactly when concentration is lowest. Training helps, but it doesn't change the task.</p>
-<h2>What the camera does</h2>
-<p>A small camera mounted above the till looks at the tray as it arrives. A computer vision model recognises each dish and proposes the bill on the POS. The cashier checks it and confirms, correcting anything the model missed. The cashier stays in control; the camera takes over the reading.</p>
-<h2>Why it runs at the counter</h2>
-<p>The model runs on a small computer next to the till rather than in the cloud. That means:</p>
-<ul><li>The bill appears in moments, not after a round trip to a server.</li><li>It keeps working when the internet connection drops at lunchtime.</li><li>Images of trays don't need to leave the premises.</li></ul>
-<h2>What it takes to set up</h2>
-<ul><li><b>Photos of every dish</b> on the menu, taken at the counter in normal light, so the model learns your food as it's actually served.</li><li><b>A link to your POS,</b> so recognised items land as normal order lines.</li><li><b>A plan for menu changes.</b> New dishes need new photos before they're recognised.</li></ul>
-<p>This is a custom build rather than an off-the-shelf product. The sensible start is one counter: run it alongside the cashier for a trial period, compare its bills with what was keyed in, and decide from there.</p>
-<div style="background: linear-gradient(135deg, #D9E0FF 0%, #EEF1FE 100%); color: #141D26; border: 1px solid #D3DAFB; border-radius: 10px; padding: 24px; display: flex; flex-direction: column; gap: 12px; margin-top: 12px"><b style="font: 700 22px/1.25 'Schibsted Grotesk',sans-serif; color: #141D26">Run a trial at one counter</b><span style="color: #4A5560">Tell us about your menu and POS, and we'll scope a single-counter trial.</span><div style="display: flex; gap: 10px; flex-wrap: wrap"><a class="btn" href="/book-a-demo" style="background: #2340E8; color: #fff">Talk about a trial</a><a class="btn" href="/book-a-demo" style="background: #fff; color: #141D26; border-color: #CDD2CA">Ask for a quick demo</a></div></div>
+<span class="lbl">F&amp;B · 3 menit baca</span>
+<h1 style="font-size: 46px; font-weight: 800">Mengapa kasir salah input pesanan, dan bagaimana kamera mengatasinya.</h1>
+<p style="font-size: 20px; color: #4A5560">Di kantin dan food court, kasir harus membaca isi nampan penuh dalam sekejap dan menginputnya di bawah tekanan. Kamera di atas kasir bisa mengambil alih tugas membaca itu.</p>
+<span style="font-size: 14.5px; color: #4A5560; border-bottom: 1px solid #CDD2CA; padding-bottom: 20px">Oleh Stella Nurina Susanto · Oktober 2026</span>
+<div class="ucbox"><span class="lbl">Penerapan</span><span style="display: flex; gap: 8px; flex-wrap: wrap"><a class="ucl" href="/use-cases#uc-tray">Pengenalan nampan makanan →</a></span></div>
+<p>Siapa pun yang pernah mengelola kantin prasmanan, gerai food court, atau konter nasi campur pasti mengenal momen ini. Pelanggan menyodorkan nampan penuh ke kasir, antrean di belakangnya makin panjang, dan kasir hanya punya beberapa detik untuk mengenali setiap lauk dan mencarinya di layar POS.</p>
+<p>Sebagian besar waktu, semuanya berjalan lancar. Namun di bawah tekanan, kesalahan bisa terjadi ke dua arah. Tagihan yang terlalu rendah diam-diam menggerus pendapatan. Tagihan yang terlalu tinggi menggerus kepercayaan, dan perdebatan di kasir membuat antrean makin lambat.</p>
+<h2>Akar masalahnya bukan kasir</h2>
+<p>Tugasnya sendiri memang sulit: banyak lauk yang tampak mirip, menu yang berganti, staf baru yang masih menghafal kode item, dan saat paling sibuk justru datang ketika konsentrasi sedang paling rendah. Pelatihan membantu, tetapi tidak mengubah sifat tugasnya.</p>
+<h2>Apa yang dilakukan kamera</h2>
+<p>Kamera kecil yang dipasang di atas kasir melihat nampan saat nampan tiba. Model computer vision mengenali setiap lauk dan menyusun usulan tagihan di POS. Kasir memeriksa lalu mengonfirmasi, sekaligus mengoreksi item yang terlewat oleh model. Kendali tetap di tangan kasir; kamera mengambil alih tugas membaca.</p>
+<h2>Mengapa sistem berjalan di konter</h2>
+<p>Model berjalan di komputer kecil di samping kasir, bukan di cloud. Artinya:</p>
+<ul><li>Tagihan muncul dalam hitungan detik, tanpa harus menunggu data bolak-balik ke server.</li><li>Sistem tetap berjalan meski koneksi internet putus saat jam makan siang.</li><li>Gambar nampan tidak perlu dikirim keluar dari lokasi.</li></ul>
+<h2>Apa yang dibutuhkan untuk pemasangan</h2>
+<ul><li><b>Foto setiap lauk</b> di menu, diambil di konter dengan pencahayaan biasa, agar model mempelajari makanan Anda sebagaimana benar-benar disajikan.</li><li><b>Koneksi ke POS Anda,</b> agar item yang dikenali masuk sebagai baris pesanan biasa.</li><li><b>Rencana untuk perubahan menu.</b> Lauk baru perlu difoto terlebih dahulu sebelum bisa dikenali.</li></ul>
+<p>Ini adalah sistem yang dibangun khusus, bukan produk siap pakai. Langkah awal yang masuk akal adalah satu konter: jalankan sistem berdampingan dengan kasir selama masa uji coba, bandingkan tagihannya dengan yang diinput kasir, lalu putuskan langkah berikutnya.</p>
+<div style="background: linear-gradient(135deg, #D9E0FF 0%, #EEF1FE 100%); color: #141D26; border: 1px solid #D3DAFB; border-radius: 10px; padding: 24px; display: flex; flex-direction: column; gap: 12px; margin-top: 12px"><b style="font: 700 22px/1.25 'Schibsted Grotesk',sans-serif; color: #141D26">Uji coba di satu konter</b><span style="color: #4A5560">Ceritakan menu dan POS Anda, dan kami akan menyusun cakupan uji coba untuk satu konter.</span><div style="display: flex; gap: 10px; flex-wrap: wrap"><a class="btn" href="/book-a-demo" style="background: #2340E8; color: #fff">Diskusikan uji coba</a><a class="btn" href="/book-a-demo" style="background: #fff; color: #141D26; border-color: #CDD2CA">Minta demo singkat</a></div></div>
 
 </article>
-<div style="display: flex; flex-direction: column; gap: 14px"><span class="lbl">Read next</span><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 14px"><a class="rel" href="/intel-queues"><span class="lbl">Queues</span><b style="font: 700 18px/1.3 'Schibsted Grotesk',sans-serif">How long is too long at the till?</b></a><a class="rel" href="/intel-cctv-footage"><span class="lbl">Store analytics</span><b style="font: 700 18px/1.3 'Schibsted Grotesk',sans-serif">Your CCTV records 12 hours a day. Here's what it could tell you.</b></a></div></div>
+<div style="display: flex; flex-direction: column; gap: 14px"><span class="lbl">Baca selanjutnya</span><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 14px"><a class="rel" href="/intel-queues"><span class="lbl">Antrean</span><b style="font: 700 18px/1.3 'Schibsted Grotesk',sans-serif">Berapa lama antrean di kasir dianggap terlalu lama?</b></a><a class="rel" href="/intel-cctv-footage"><span class="lbl">Store analytics</span><b style="font: 700 18px/1.3 'Schibsted Grotesk',sans-serif">CCTV Anda merekam 12 jam sehari. Inilah yang bisa diceritakannya.</b></a></div></div>
 </main>
-<footer class="wrap" style="max-width: 1200px; margin: 0 auto; padding: 28px 40px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 14px; color: #4A5560; border-top: 1px solid #CDD2CA"><span class="wm" style="font-size: 18px">aiqu<span class="d">.</span></span><span>Jakarta, Indonesia · aiqu.my · <a href="/intel-data-protection-faq" style="color: #4A5560">Data protection</a> · <a href="/book-a-demo" style="color: #4A5560">Book a demo</a></span></footer>
+<footer class="wrap" style="max-width: 1200px; margin: 0 auto; padding: 28px 40px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 14px; color: #4A5560; border-top: 1px solid #CDD2CA"><span class="wm" style="font-size: 18px">aiqu<span class="d">.</span></span><span>Jakarta, Indonesia · aiqu.my · <a href="/intel-data-protection-faq" style="color: #4A5560">Pelindungan data</a> · <a href="/book-a-demo" style="color: #4A5560">Jadwalkan demo</a></span></footer>
 <dc-import name="Chat" start-open="{{false}}" hint-size="0px,0px"></dc-import>
 </div>
 </x-dc>

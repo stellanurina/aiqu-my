@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://aiqu.my/</loc><lastmod>2026-10-07</lastmod></url>
-  <url><loc>https://aiqu.my/use-cases</loc><lastmod>2026-10-07</lastmod></url>
-  <url><loc>https://aiqu.my/intel</loc><lastmod>2026-10-07</lastmod></url>
-  <url><loc>https://aiqu.my/book-a-demo</loc><lastmod>2026-10-07</lastmod></url>
-  <url><loc>https://aiqu.my/intel-cctv-footage</loc><lastmod>2026-10-07</lastmod></url>
-  <url><loc>https://aiqu.my/intel-cctv-privacy-law</loc><lastmod>2026-10-07</lastmod></url>
-  <url><loc>https://aiqu.my/intel-data-protection-faq</loc><lastmod>2026-10-07</lastmod></url>
-  <url><loc>https://aiqu.my/intel-food-tray</loc><lastmod>2026-10-07</lastmod></url>
-  <url><loc>https://aiqu.my/intel-how-we-count</loc><lastmod>2026-10-07</lastmod></url>
-  <url><loc>https://aiqu.my/intel-queues</loc><lastmod>2026-10-07</lastmod></url>
-  <url><loc>https://aiqu.my/intel-storefront-entry-rate</loc><lastmod>2026-10-07</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://aiqu.my/</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/"/></url>
+  <url><loc>https://aiqu.my/en/</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/"/></url>
+  <url><loc>https://aiqu.my/use-cases</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/use-cases"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/use-cases"/></url>
+  <url><loc>https://aiqu.my/en/use-cases</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/use-cases"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/use-cases"/></url>
+  <url><loc>https://aiqu.my/intel</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/intel"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/intel"/></url>
+  <url><loc>https://aiqu.my/en/intel</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/intel"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/intel"/></url>
+  <url><loc>https://aiqu.my/book-a-demo</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/book-a-demo"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/book-a-demo"/></url>
+  <url><loc>https://aiqu.my/en/book-a-demo</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/book-a-demo"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/book-a-demo"/></url>
+  <url><loc>https://aiqu.my/intel-cctv-footage</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/intel-cctv-footage"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/intel-cctv-footage"/></url>
+  <url><loc>https://aiqu.my/en/intel-cctv-footage</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/intel-cctv-footage"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/intel-cctv-footage"/></url>
+  <url><loc>https://aiqu.my/intel-cctv-privacy-law</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/intel-cctv-privacy-law"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/intel-cctv-privacy-law"/></url>
+  <url><loc>https://aiqu.my/en/intel-cctv-privacy-law</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/intel-cctv-privacy-law"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/intel-cctv-privacy-law"/></url>
+  <url><loc>https://aiqu.my/intel-data-protection-faq</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/intel-data-protection-faq"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/intel-data-protection-faq"/></url>
+  <url><loc>https://aiqu.my/en/intel-data-protection-faq</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/intel-data-protection-faq"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/intel-data-protection-faq"/></url>
+  <url><loc>https://aiqu.my/intel-food-tray</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/intel-food-tray"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/intel-food-tray"/></url>
+  <url><loc>https://aiqu.my/en/intel-food-tray</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/intel-food-tray"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/intel-food-tray"/></url>
+  <url><loc>https://aiqu.my/intel-how-we-count</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/intel-how-we-count"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/intel-how-we-count"/></url>
+  <url><loc>https://aiqu.my/en/intel-how-we-count</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/intel-how-we-count"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/intel-how-we-count"/></url>
+  <url><loc>https://aiqu.my/intel-queues</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/intel-queues"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/intel-queues"/></url>
+  <url><loc>https://aiqu.my/en/intel-queues</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/intel-queues"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/intel-queues"/></url>
+  <url><loc>https://aiqu.my/intel-storefront-entry-rate</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/intel-storefront-entry-rate"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/intel-storefront-entry-rate"/></url>
+  <url><loc>https://aiqu.my/en/intel-storefront-entry-rate</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/intel-storefront-entry-rate"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/intel-storefront-entry-rate"/></url>
 </urlset>
