@@ -1,0 +1,13 @@
+{
+  "name": "aiqu-my",
+  "version": "1.0.0",
+  "private": true,
+  "description": "aiqu.my public website (Store Analytics)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

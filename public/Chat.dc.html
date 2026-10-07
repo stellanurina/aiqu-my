@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ask aiqu. chat</title>
+<script src="/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0}
+.cq{font:500 13.5px 'IBM Plex Sans',sans-serif;padding:8px 12px;border-radius:999px;border:1px solid #D3DAFB;background:#fff;color:#1A2FB0;cursor:pointer;min-height:36px;text-align:left}
+.cq:hover{background:#EEF1FE}
+.cb{max-width:85%;padding:10px 13px;border-radius:12px;font-size:14.5px;line-height:1.45;white-space:pre-line}
+</style>
+</helmet>
+<div style="position: fixed; right: 20px; bottom: 20px; z-index: 60; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; font-family: 'IBM Plex Sans','Segoe UI',system-ui,sans-serif; color: #141D26">
+<sc-if value="{{open}}" hint-placeholder-val="{{true}}">
+<section aria-label="Chat with aiqu." style="width: min(380px, calc(100vw - 40px)); height: min(560px, calc(100vh - 110px)); background: #fff; border: 1px solid #CDD2CA; border-radius: 14px; box-shadow: 0 18px 48px rgba(20,29,38,.18); display: flex; flex-direction: column; overflow: hidden">
+<header style="display: flex; align-items: center; gap: 10px; padding: 14px 16px; background: linear-gradient(135deg, #D9E0FF 0%, #EEF1FE 100%); color: #141D26; border-bottom: 1px solid #D3DAFB">
+<span style="width: 34px; height: 34px; border-radius: 50%; background: #2340E8; display: grid; place-items: center; font: 800 16px 'Schibsted Grotesk',sans-serif; color: #fff; flex: none">a.</span>
+<div style="display: flex; flex-direction: column; flex: 1; min-width: 0"><b style="font: 700 16px 'Schibsted Grotesk',sans-serif">Ask aiqu.</b><span style="font-size: 12.5px; color: #4A5560">Quick answers. Stella reads every chat.</span></div>
+<button onClick="{{toggle}}" aria-label="Close chat" style="background: transparent; border: 0; color: #141D26; width: 40px; height: 40px; cursor: pointer; font-size: 22px; line-height: 1">×</button>
+</header>
+<div style="flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px; background: #F7F8F4">
+<sc-for list="{{msgs}}" as="m" hint-placeholder-count="2">
+<div style="display: flex; flex-direction: column; align-items: {{m.align}}; gap: 6px">
+<div class="cb" style="background: {{m.bg}}; color: {{m.fg}}; border: 1px solid {{m.bd}}">{{m.text}}</div>
+<sc-if value="{{m.hasLink}}" hint-placeholder-val="{{false}}"><a href="{{m.href}}" style="font: 600 14px 'IBM Plex Sans',sans-serif; background: #2340E8; color: #fff; text-decoration: none; padding: 9px 14px; border-radius: 6px">{{m.linkLabel}}</a></sc-if>
+</div>
+</sc-for>
+<sc-if value="{{showQuick}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; flex-wrap: wrap; gap: 6px; padding-top: 4px"><sc-for list="{{quick}}" as="q" hint-placeholder-count="5"><button class="cq" onClick="{{q.pick}}">{{q.label}}</button></sc-for></div>
+</sc-if>
+</div>
+<div style="display: flex; gap: 8px; padding: 12px; border-top: 1px solid #E1E4DD; background: #fff">
+<label style="flex: 1; min-width: 0"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Your message</span><input value="{{draft}}" onChange="{{setDraft}}" onKeyDown="{{keyDown}}" placeholder="{{placeholder}}" style="width: 100%; box-sizing: border-box; font: 15px 'IBM Plex Sans',sans-serif; padding: 10px 12px; border: 1px solid #CDD2CA; border-radius: 8px; min-height: 44px; color: #141D26"></label>
+<button onClick="{{send}}" style="font: 600 14px 'IBM Plex Sans',sans-serif; background: #2340E8; color: #fff; border: 0; border-radius: 8px; padding: 0 16px; min-height: 44px; cursor: pointer">Send</button>
+</div>
+</section>
+</sc-if>
+<button onClick="{{toggle}}" aria-label="{{fabLabel}}" style="display: flex; align-items: center; gap: 8px; background: #2340E8; color: #fff; border: 0; border-radius: 999px; padding: 0 20px 0 16px; height: 52px; font: 600 15px 'IBM Plex Sans',sans-serif; cursor: pointer; box-shadow: 0 8px 24px rgba(35,64,232,.35)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>{{fabText}}</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"startOpen":{"editor":"boolean","default":true},"$preview":{"width":440,"height":660}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+const hello = { from: 'bot', text: 'Hi! I can answer quick questions about our free 48-hour analysis. Pick one below or type your own.' };
+this.state = { open: props.startOpen ?? true, msgs: [hello], draft: '', waitEmail: false };
+}
+answer(key) {
+const A = {
+free: { text: 'You get a free analysis of 48 hours of footage from up to 3 of your cameras: visitors by hour, the busiest times, where people spend time, and how long the queue gets. It comes as a dashboard, plus a short call to walk you through it.' },
+price: { text: 'It depends on how many cameras, days and sites you want covered, so we quote after a quick look at your setup. The quickest way is a 30-minute demo with Stella.', href: '/book-a-demo', label: 'Ask for a quick demo' },
+privacy: { text: 'We count people as anonymous shapes. No faces, no names, and the raw video is deleted 30 days after upload. There is a page written for legal teams too.', href: '/intel-data-protection-faq', label: 'Read the data protection FAQ' },
+footage: { text: '48 hours from cameras you already have (an entrance, the checkout and one busy aisle work well), plus a photo of your floor plan. After a quick call, Stella sends you a private upload link.' },
+demo: { text: 'Pick a time that suits you. The demo takes 30 minutes: Stella shows a sample dashboard and looks at which of your cameras could work.', href: '/book-a-demo', label: 'Choose a time' },
+count: { text: 'Software follows each person as an anonymous shape while they are in view and adds them to a count when they cross an entrance line or join a queue. We also check samples by hand.', href: '/intel-how-we-count', label: 'How we count' }
+};
+return A[key];
+}
+classify(t) {
+const s = t.toLowerCase();
+if (/(price|cost|harga|biaya|berapa|quote|rp\b|fee|bayar)/.test(s)) return 'price';
+if (/(privacy|legal|pdp|law|hukum|wajah|face|data|aman)/.test(s)) return 'privacy';
+if (/(free|gratis|trial|coba)/.test(s)) return 'free';
+if (/(footage|video|camera|kamera|cctv|upload|rekaman|floor|denah)/.test(s)) return 'footage';
+if (/(demo|call|meet|talk|book|jadwal)/.test(s)) return 'demo';
+if (/(accura|akurat|count|hitung|how does)/.test(s)) return 'count';
+return null;
+}
+push(userText, key) {
+const add = [{ from: 'user', text: userText }];
+if (this.state.waitEmail) {
+if (/.+@.+\..+/.test(userText)) { add.push({ from: 'bot', text: 'Thank you. Stella will reply to ' + userText.trim() + ' within one working day.' }); this.setState({ msgs: this.state.msgs.concat(add), waitEmail: false, draft: '' }); }
+else { add.push({ from: 'bot', text: "That doesn't look like an email address. Could you check it?" }); this.setState({ msgs: this.state.msgs.concat(add), draft: '' }); }
+return;
+}
+const k = key || this.classify(userText);
+if (k) { const a = this.answer(k); add.push({ from: 'bot', text: a.text, href: a.href, label: a.label }); this.setState({ msgs: this.state.msgs.concat(add), draft: '' }); }
+else { add.push({ from: 'bot', text: "Good question. I'll pass it to Stella. What's your work email so she can reply?" }); this.setState({ msgs: this.state.msgs.concat(add), draft: '', waitEmail: true }); }
+}
+renderVals() {
+const st = this.state;
+const Q = [['free', 'What do I get for free?'], ['price', 'How much does it cost?'], ['footage', 'What footage do you need?'], ['privacy', 'Is this allowed under privacy law?'], ['demo', 'Book a quick demo']];
+const msgs = st.msgs.map((m) => ({ text: m.text, align: m.from === 'user' ? 'flex-end' : 'flex-start', bg: m.from === 'user' ? '#2340E8' : '#fff', fg: m.from === 'user' ? '#fff' : '#141D26', bd: m.from === 'user' ? '#2340E8' : '#E1E4DD', hasLink: !!m.href, href: m.href || '#', linkLabel: m.label || '' }));
+const send = () => { const t = (st.draft || '').trim(); if (t) this.push(t); };
+return {
+open: st.open, toggle: () => this.setState({ open: !st.open }),
+fabText: st.open ? 'Close' : 'Questions? Ask us', fabLabel: st.open ? 'Close chat' : 'Open chat',
+msgs: msgs, showQuick: !st.waitEmail,
+quick: Q.map((q) => ({ label: q[1], pick: () => this.push(q[1], q[0]) })),
+draft: st.draft, setDraft: (e) => this.setState({ draft: e.target.value }),
+keyDown: (e) => { if (e.key === 'Enter') { if (e.preventDefault) e.preventDefault(); const t = (e.target.value || '').trim(); if (t) this.push(t); } },
+send: send, placeholder: st.waitEmail ? 'name@company.co.id' : 'Type a question…'
+};
+}
+}
+</script>
+</body>
+</html>
