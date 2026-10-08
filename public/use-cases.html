@@ -62,7 +62,7 @@ h1,h2,h3{font-family:'Schibsted Grotesk','Helvetica Neue',sans-serif;letter-spac
 <p style="margin: 0; font-size: 18px; color: #4A5560; max-width: 66ch">Sebagian besar bisnis merekam CCTV berjam-jam setiap hari tanpa pernah melihatnya kembali. Berikut pekerjaan yang bisa dilakukan sebuah kamera, mulai dari menghitung pengunjung hingga mengenali isi nampan makanan. Empat di antaranya sudah menjadi bagian dari Store Analytics; sisanya kami bangun sesuai kebutuhan lokasi Anda.</p>
 </div>
 <div style="background: linear-gradient(135deg, #D9E0FF 0%, #EEF1FE 100%); color: #141D26; border: 1px solid #D3DAFB; border-radius: 10px; padding: 22px 26px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap">
-<div style="display: flex; flex-direction: column; gap: 4px"><span class="lbl" style="color: #1A2FB0">Segera hadir</span><b style="font-size: 17px">Studi kasus pertama AIQU berasal dari analisis gratis 48 jam yang sedang berjalan.</b></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><span class="lbl" style="color: #1A2FB0">Segera hadir</span><b style="font-size: 17px">Studi kasus pertama AIQU berasal dari analisis 48 jam yang sedang berjalan.</b></div>
 <a class="btn" href="/book-a-demo" style="background: #2340E8; color: #fff">Minta demo singkat</a>
 </div>
 <div style="display: flex; gap: 8px; flex-wrap: wrap"><sc-for list="{{chips}}" as="c" hint-placeholder-count="7"><button class="chip" onClick="{{c.pick}}" style="background: {{c.bg}}; color: {{c.fg}}; border-color: {{c.bd}}">{{c.label}}</button></sc-for></div>
@@ -126,7 +126,7 @@ const C = [['all', 'Semua'], ['now', 'Tersedia sekarang'], ['retail', 'Ritel & m
 const chips = C.map((c) => ({ label: c[1], bg: f === c[0] ? '#2340E8' : '#fff', fg: f === c[0] ? '#fff' : '#141D26', bd: f === c[0] ? '#2340E8' : '#CDD2CA', pick: () => this.setState({ f: c[0] }) }));
 const list = S.filter((s) => f === 'all' || (f === 'now' ? s.now : (s.k === f || s.also === f))).map((s) => { const key = s.id.slice(3); const guides = INTEL.filter((g) => g.uc.indexOf(key) >= 0).map((g) => ({ href: SL[g.id], title: g.title })); return Object.assign({}, s, {
 status: s.now ? 'TERSEDIA SEKARANG' : 'DIBANGUN KHUSUS', pillBg: s.now ? '#DCEFE3' : '#E1E4DD', pillFg: s.now ? '#1F7A4A' : '#4A5560',
-href: s.now ? '/book-a-demo' : '/book-a-demo', cta: s.now ? 'Coba gratis dengan rekaman 48 jam →' : 'Diskusikan solusi khusus →', guides: guides, hasGuides: guides.length > 0 }); });
+href: s.now ? '/book-a-demo' : '/book-a-demo', cta: s.now ? 'Minta penawaran untuk rekaman 48 jam →' : 'Diskusikan solusi khusus →', guides: guides, hasGuides: guides.length > 0 }); });
 const topic = f === 'now' ? 'retail' : f;
 const rel = (f === 'all' ? INTEL.slice(0, 3) : INTEL.filter((g) => g.topics.indexOf(topic) >= 0).sort((x, y) => x.topics.length - y.topics.length).slice(0, 3)).map((g) => ({ href: SL[g.id], cat: g.cat, mins: g.mins, title: g.title }));
 const names = { all: 'Dari Intel', now: 'Dari Intel: tersedia sekarang', retail: 'Dari Intel: ritel dan mal', fnb: 'Dari Intel: F&B', fmcg: 'Dari Intel: FMCG dan gudang', logistics: 'Dari Intel: logistik', construction: 'Dari Intel: konstruksi' };

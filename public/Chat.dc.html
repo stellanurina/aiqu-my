@@ -60,13 +60,13 @@ body{margin:0}
 class Component extends DCLogic {
 constructor(props) {
 super(props);
-const hello = { from: 'bot', text: 'Halo! Saya bisa menjawab pertanyaan singkat seputar analisis gratis 48 jam kami. Pilih salah satu di bawah atau ketik pertanyaan Anda sendiri.' };
+const hello = { from: 'bot', text: 'Halo! Saya bisa menjawab pertanyaan singkat seputar analisis 48 jam kami, apa yang gratis, dan cara kerja harganya. Pilih salah satu di bawah atau ketik pertanyaan Anda sendiri.' };
 this.state = { open: props.startOpen ?? true, msgs: [hello], draft: '', waitEmail: false };
 }
 answer(key) {
 const A = {
-free: { text: 'Anda mendapatkan analisis gratis atas rekaman 48 jam dari maksimal 3 kamera Anda: jumlah pengunjung per jam, jam sibuk, area tempat pengunjung paling lama berada, dan seberapa panjang antreannya. Hasilnya berupa dashboard, ditambah panggilan singkat untuk menjelaskannya.' },
-price: { text: 'Tergantung berapa kamera, hari, dan lokasi yang ingin dicakup, jadi kami memberikan penawaran setelah melihat sekilas setup Anda. Cara tercepat adalah demo 30 menit bersama Stella.', href: '/book-a-demo', label: 'Minta demo singkat' },
+free: { text: 'Demo dan unggah rekaman gratis. Analisisnya berbayar dan kami beri penawaran sebelum mulai. Rekaman 48 jam dari maksimal 3 kamera Anda kami ubah menjadi dashboard: jumlah pengunjung per jam, jam sibuk, area tempat pengunjung paling lama berada, dan seberapa panjang antreannya. Ditambah panggilan singkat untuk menjelaskannya.' },
+price: { text: 'Demo dan unggah gratis. Analisisnya berbayar, dengan penawaran per kamera dan per 48 jam rekaman, jadi harganya tergantung berapa kamera, hari, dan lokasi yang ingin dicakup. Cara tercepat adalah demo 30 menit bersama Stella.', href: '/book-a-demo', label: 'Minta demo singkat' },
 privacy: { text: 'Kami menghitung orang sebagai bentuk anonim. Tanpa wajah, tanpa nama, dan video mentah dihapus 30 hari setelah diunggah. Kami juga punya halaman khusus untuk tim legal.', href: '/intel-data-protection-faq', label: 'Baca FAQ pelindungan data' },
 footage: { text: 'Rekaman 48 jam dari kamera yang sudah Anda miliki (pintu masuk, kasir, dan satu lorong yang ramai sudah cukup), ditambah foto denah lantai. Setelah panggilan singkat, Stella akan mengirimkan tautan upload pribadi.' },
 demo: { text: 'Pilih waktu yang sesuai untuk Anda. Demo berlangsung 30 menit: Stella menunjukkan contoh dashboard dan melihat kamera mana saja yang bisa digunakan.', href: '/book-a-demo', label: 'Pilih waktu' },
@@ -97,7 +97,7 @@ else { add.push({ from: 'bot', text: 'Pertanyaan bagus. Saya akan meneruskannya 
 }
 renderVals() {
 const st = this.state;
-const Q = [['free', 'Apa yang saya dapat gratis?'], ['price', 'Berapa biayanya?'], ['footage', 'Rekaman apa yang dibutuhkan?'], ['privacy', 'Apakah ini sesuai UU PDP?'], ['demo', 'Jadwalkan demo singkat']];
+const Q = [['free', 'Apa yang gratis dan apa yang berbayar?'], ['price', 'Berapa biayanya?'], ['footage', 'Rekaman apa yang dibutuhkan?'], ['privacy', 'Apakah ini sesuai UU PDP?'], ['demo', 'Jadwalkan demo singkat']];
 const msgs = st.msgs.map((m) => ({ text: m.text, align: m.from === 'user' ? 'flex-end' : 'flex-start', bg: m.from === 'user' ? '#2340E8' : '#fff', fg: m.from === 'user' ? '#fff' : '#141D26', bd: m.from === 'user' ? '#2340E8' : '#E1E4DD', hasLink: !!m.href, href: m.href || '#', linkLabel: m.label || '' }));
 const send = () => { const t = (st.draft || '').trim(); if (t) this.push(t); };
 return {

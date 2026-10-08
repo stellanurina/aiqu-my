@@ -65,17 +65,18 @@ const server = http.createServer((req, res) => {
 
   if (url === '/healthz') { res.writeHead(200, Object.assign({ 'Content-Type': 'application/json' }, SECURITY)); return res.end('{"ok":true}'); }
 
-  // --- LANGUAGE ROUTING OVERRIDE ---
-  // If user visits the root domain, silently serve the English version
-  if (url === '/' || url === '/index.html') {
-    url = '/en/';
-  } 
-  // If user clicks the Bahasa toggle (aiqu.my/id), silently serve the root Bahasa version
-  else if (url === '/id' || url === '/id/') {
-    url = '/index.html';
+  // --- LANGUAGE ROUTING ---
+  // English is the default. The root redirects to /en/ (not a silent rewrite): the page loads its chat widget
+  // from a relative path, so serving English at "/" made it fetch the Bahasa /Chat.dc.html.
+  if (url.split('?')[0] === '/' || url.split('?')[0] === '/index.html') {
+    res.writeHead(302, { Location: '/en/', 'Cache-Control': 'no-cache' }); return res.end();
+  }
+  // The Bahasa toggle (aiqu.my/id) silently serves the Bahasa home page; its relative chat path (/Chat.dc.html) is Bahasa too.
+  if (url.split('?')[0] === '/id' || url.split('?')[0] === '/id/') {
+    return send(res, 200, path.join(ROOT, 'index.html'));
   }
   // ---------------------------------
-  
+
   // /en -> /en/ so relative files (Chat.dc.html) load from /en/
   if (url.split('?')[0] === '/en') { res.writeHead(301, { Location: '/en/' }); return res.end(); }
 

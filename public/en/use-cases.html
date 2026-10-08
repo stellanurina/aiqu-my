@@ -62,7 +62,7 @@ h1,h2,h3{font-family:'Schibsted Grotesk','Helvetica Neue',sans-serif;letter-spac
 <p style="margin: 0; font-size: 18px; color: #4A5560; max-width: 66ch">Most businesses record hours of CCTV every day and never look at it. Here are the jobs a camera can do, from counting visitors to reading a food tray. Four are part of Store Analytics today; the rest we build to fit your site.</p>
 </div>
 <div style="background: linear-gradient(135deg, #D9E0FF 0%, #EEF1FE 100%); color: #141D26; border: 1px solid #D3DAFB; border-radius: 10px; padding: 22px 26px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap">
-<div style="display: flex; flex-direction: column; gap: 4px"><span class="lbl" style="color: #1A2FB0">Coming next</span><b style="font-size: 17px">Our first AIQU case study comes from a free 48-hour analysis, now in progress.</b></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><span class="lbl" style="color: #1A2FB0">Coming next</span><b style="font-size: 17px">Our first AIQU case study comes from a 48-hour analysis, now in progress.</b></div>
 <a class="btn" href="/en/book-a-demo" style="background: #2340E8; color: #fff">Ask for a quick demo</a>
 </div>
 <div style="display: flex; gap: 8px; flex-wrap: wrap"><sc-for list="{{chips}}" as="c" hint-placeholder-count="7"><button class="chip" onClick="{{c.pick}}" style="background: {{c.bg}}; color: {{c.fg}}; border-color: {{c.bd}}">{{c.label}}</button></sc-for></div>
@@ -126,7 +126,7 @@ const C = [['all', 'All'], ['now', 'Available now'], ['retail', 'Retail & malls'
 const chips = C.map((c) => ({ label: c[1], bg: f === c[0] ? '#2340E8' : '#fff', fg: f === c[0] ? '#fff' : '#141D26', bd: f === c[0] ? '#2340E8' : '#CDD2CA', pick: () => this.setState({ f: c[0] }) }));
 const list = S.filter((s) => f === 'all' || (f === 'now' ? s.now : (s.k === f || s.also === f))).map((s) => { const key = s.id.slice(3); const guides = INTEL.filter((g) => g.uc.indexOf(key) >= 0).map((g) => ({ href: SL[g.id], title: g.title })); return Object.assign({}, s, {
 status: s.now ? 'AVAILABLE NOW' : 'CUSTOM BUILD', pillBg: s.now ? '#DCEFE3' : '#E1E4DD', pillFg: s.now ? '#1F7A4A' : '#4A5560',
-href: s.now ? '/en/book-a-demo' : '/en/book-a-demo', cta: s.now ? 'Try it free on 48 hours of footage →' : 'Talk about a custom build →', guides: guides, hasGuides: guides.length > 0 }); });
+href: s.now ? '/en/book-a-demo' : '/en/book-a-demo', cta: s.now ? 'Get a quote for 48 hours of footage →' : 'Talk about a custom build →', guides: guides, hasGuides: guides.length > 0 }); });
 const topic = f === 'now' ? 'retail' : f;
 const rel = (f === 'all' ? INTEL.slice(0, 3) : INTEL.filter((g) => g.topics.indexOf(topic) >= 0).sort((x, y) => x.topics.length - y.topics.length).slice(0, 3)).map((g) => ({ href: SL[g.id], cat: g.cat, mins: g.mins, title: g.title }));
 const names = { all: 'From Intel', now: 'From Intel: available now', retail: 'From Intel: retail and malls', fnb: 'From Intel: F&B', fmcg: 'From Intel: FMCG and warehouses', logistics: 'From Intel: logistics', construction: 'From Intel: construction' };
