@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url><loc>https://aiqu.my/</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/"/></url>
-  <url><loc>https://aiqu.my/en/</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/"/></url>
+  <url><loc>https://aiqu.my/</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/id"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/"/></url>
+  <url><loc>https://aiqu.my/id</loc><lastmod>2026-10-08</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/id"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/"/></url>
+  <url><loc>https://aiqu.my/en/</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/id"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/"/></url>
   <url><loc>https://aiqu.my/use-cases</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/use-cases"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/use-cases"/></url>
   <url><loc>https://aiqu.my/en/use-cases</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/use-cases"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/use-cases"/></url>
   <url><loc>https://aiqu.my/intel</loc><lastmod>2026-10-07</lastmod><xhtml:link rel="alternate" hreflang="id" href="https://aiqu.my/intel"/><xhtml:link rel="alternate" hreflang="en" href="https://aiqu.my/en/intel"/></url>
