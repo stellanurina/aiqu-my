@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   // 1. Track "Minta demo singkat" / Book Demo CTA clicks
-  document.querySelectorAll('a[href="/book-a-demo"]').forEach(function (button) {
+  document.querySelectorAll('a[href$="/book-a-demo"]').forEach(function (button) {
     button.addEventListener('click', function () {
       gtag('event', 'click_book_demo_cta', {
         event_category: 'Lead Generation',
