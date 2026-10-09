@@ -83,9 +83,10 @@ const server = http.createServer((req, res) => {
 
   // Old links: /index.html -> /, /use-cases.html -> /use-cases
   const clean = url.split('?')[0];
-  if (clean === '/index.html' || clean === '/en/index.html') { res.writeHead(301, { Location: clean.replace('index.html', '') }); return res.end(); }
-  if (clean.endsWith('.html') && !clean.endsWith('.dc.html')) { res.writeHead(301, { Location: clean.slice(0, -5) }); return res.end(); }
-
+  if (clean === '/en/index.html') { res.writeHead(301, { Location: '/en/' }); return res.end(); }
+  if (!langHandled && clean === '/index.html') { res.writeHead(301, { Location: '/' }); return res.end(); }
+  if (!langHandled && clean.endsWith('.html') && !clean.endsWith('.dc.html')) { res.writeHead(301, { Location: clean.slice(0, -5) }); return res.end(); }
+  
   const file = resolveFile(url);
   if (file) return send(res, 200, file);
 
