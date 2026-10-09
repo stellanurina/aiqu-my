@@ -82,7 +82,13 @@ function send(res, status, file, extraHeaders) {
 }
 
 const server = http.createServer((req, res) => {
-  if (req.method !== 'GET' && req.method !== 'HEAD') { res.writeHead(405, SECURITY); return res.end(); }
+  // CSP violation reports (report-only policy above). Accept and discard so browsers don't log a 405.
+  if (req.method === 'POST' && (req.url || '').split('?')[0] === '/csp-report') {
+    req.resume();
+    res.writeHead(204, { 'Cache-Control': 'no-store' });
+    return res.end();
+  }
+  if (req.method !== 'GET' && req.method !== 'HEAD') { res.writeHead(405, { Allow: 'GET, HEAD' }); return res.end(); }
   let url = req.url || '/';
   let langHandled = false;
 
