@@ -74,6 +74,7 @@ const server = http.createServer((req, res) => {
   // If user clicks the Bahasa toggle (aiqu.my/id), silently serve the root Bahasa version
   else if (url === '/id' || url === '/id/') {
     url = '/index.html';
+    langHandled = true;
   }
   // ---------------------------------
   
