@@ -96,7 +96,7 @@ const server = http.createServer((req, res) => {
 
   const notFound = path.join(ROOT, '404.html');
   if (fs.existsSync(notFound)) return send(res, 404, notFound);
-  res.writeHead(404, Object.assign({ 'Content-Type': 'text/plain' }, SECURITY));
+  res.writeHead(404, Object.assign({ 'Content-Type': 'text/plain', 'Cache-Control': 'no-store' }, SECURITY));
   res.end('Not found');
 });
 
