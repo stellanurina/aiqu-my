@@ -62,6 +62,7 @@ function send(res, status, file, extraHeaders) {
 const server = http.createServer((req, res) => {
   if (req.method !== 'GET' && req.method !== 'HEAD') { res.writeHead(405, SECURITY); return res.end(); }
   let url = req.url || '/';
+  let langHandled = false;
 
   if (url === '/healthz') { res.writeHead(200, Object.assign({ 'Content-Type': 'application/json' }, SECURITY)); return res.end('{"ok":true}'); }
 
