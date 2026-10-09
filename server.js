@@ -19,7 +19,8 @@ const SECURITY = {
   'X-Content-Type-Options': 'nosniff',
   'X-Frame-Options': 'SAMEORIGIN',
   'Referrer-Policy': 'strict-origin-when-cross-origin',
-  'Strict-Transport-Security': 'max-age=31536000'
+  'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
+  'Content-Security-Policy-Report-Only': "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com; frame-src https://calendar.google.com; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; report-uri /csp-report"
 };
 
 function resolveFile(urlPath) {
@@ -60,7 +61,13 @@ function send(res, status, file, extraHeaders) {
     'Cache-Control': isHtml || file.endsWith('.dc.html') ? 'no-cache' : 'public, max-age=86400'
   }, SECURITY, extraHeaders || {}));
   if (path.basename(file) === 'book-a-demo.html') return res.end(bookingHtml(file));
-  fs.createReadStream(file).pipe(res);
+  const stream = fs.createReadStream(file);
+  stream.on('error', () => {
+    if (res.headersSent) return res.destroy();
+    res.writeHead(500, Object.assign({ 'Content-Type': 'text/plain', 'Cache-Control': 'no-store' }, SECURITY));
+    res.end('Internal server error');
+  });
+  stream.pipe(res);
 }
 
 const server = http.createServer((req, res) => {
