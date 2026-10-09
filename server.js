@@ -53,6 +53,17 @@ function bookingHtml(file) {
   return html.replace(/<!--\/?(NO)?CAL-->/g, '');
 }
 
+// Cache book-a-demo.html rendering. Output depends only on the file contents and
+// GCAL_URL, both fixed at process start, so re-reading on every request is wasted I/O.
+const BOOKING_CACHE = new Map();
+function getBookingHtml(file) {
+  let html = BOOKING_CACHE.get(file);
+  if (html !== undefined) return html;
+  try { html = bookingHtml(file); } catch (e) { console.error('bookingHtml failed:', e.message); html = ''; }
+  BOOKING_CACHE.set(file, html);
+  return html;
+}
+
 function send(res, status, file, extraHeaders) {
   const ext = path.extname(file).toLowerCase();
   const isHtml = ext === '.html';
@@ -60,7 +71,7 @@ function send(res, status, file, extraHeaders) {
     'Content-Type': TYPES[ext] || 'application/octet-stream',
     'Cache-Control': isHtml || file.endsWith('.dc.html') ? 'no-cache' : 'public, max-age=86400'
   }, SECURITY, extraHeaders || {}));
-  if (path.basename(file) === 'book-a-demo.html') return res.end(bookingHtml(file));
+  if (path.basename(file) === 'book-a-demo.html') return res.end(getBookingHtml(file));
   const stream = fs.createReadStream(file);
   stream.on('error', () => {
     if (res.headersSent) return res.destroy();
