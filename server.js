@@ -7,6 +7,7 @@ const path = require('path');
 
 const PORT = Number(process.env.PORT) || 3000;
 const ROOT = path.join(__dirname, 'public');
+const ROOT_REAL = fs.realpathSync(ROOT);
 
 const TYPES = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8',
@@ -30,7 +31,10 @@ function resolveFile(urlPath) {
   for (const c of candidates) {
     const full = path.join(ROOT, path.normalize(c));
     if (!full.startsWith(ROOT)) return null; // block ../ tricks
-    try { if (fs.statSync(full).isFile()) return full; } catch (e) { /* try next */ }
+    let real;
+    try { real = fs.realpathSync(full); } catch (e) { continue; }
+    if (!real.startsWith(ROOT_REAL)) return null; // symlink escaped
+    try { if (fs.statSync(real).isFile()) return real; } catch (e) { /* try next */ }
   }
   return null;
 }
