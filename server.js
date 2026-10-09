@@ -70,6 +70,12 @@ const server = http.createServer((req, res) => {
 
   if (url === '/healthz') { res.writeHead(200, Object.assign({ 'Content-Type': 'application/json' }, SECURITY)); return res.end('{"ok":true}'); }
 
+  // /favicon.ico -> /assets/favicon.svg. Browsers and crawlers always request it.
+  if (url === '/favicon.ico') {
+    const favicon = path.join(ROOT, 'assets', 'favicon.svg');
+    try { if (fs.statSync(favicon).isFile()) return send(res, 200, favicon); } catch (e) { /* fall through to 404 */ }
+  }
+
   // --- LANGUAGE ROUTING OVERRIDE ---
   // If user visits the root domain, silently serve the English version
   if (url === '/' || url === '/index.html') {
