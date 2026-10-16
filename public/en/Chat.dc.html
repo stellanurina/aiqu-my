@@ -61,13 +61,13 @@ body{margin:0}
 class Component extends DCLogic {
 constructor(props) {
 super(props);
-const hello = { from: 'bot', text: 'Hi! I can answer quick questions about our free 48-hour analysis. Pick one below or type your own.' };
+const hello = { from: 'bot', text: 'Hi! I can answer quick questions about our store analytics and the free 48-hour upload. Pick one below or type your own.' };
 this.state = { open: props.startOpen ?? true, msgs: [hello], draft: '', waitEmail: false };
 }
 answer(key) {
 const A = {
-free: { text: 'You get a free analysis of 48 hours of footage from up to 3 of your cameras: visitors by hour, the busiest times, where people spend time, and how long the queue gets. It comes as a dashboard, plus a short call to walk you through it.' },
-price: { text: 'It depends on how many cameras, days and sites you want covered, so we quote after a quick look at your setup. The quickest way is a 30-minute demo with Stella.', href: '/en/book-a-demo', label: 'Ask for a quick demo' },
+free: { text: 'Uploading is free: one 48-hour recording per company, from cameras you already have. The analysis is paid. It shows visitors by hour, the busiest times, where people spend time, and how long the queue gets, as a dashboard within 10 working days, plus a short call to walk you through it.' },
+price: { text: 'The upload is free and the analysis is paid. The price depends on how many cameras, days and sites you want covered, so we quote after a quick look at your setup. The quickest way is a 30-minute demo with Stella.', href: '/en/book-a-demo', label: 'Ask for a quick demo' },
 privacy: { text: 'We count people as anonymous shapes. No faces, no names, and the raw video is deleted 30 days after upload. There is a page written for legal teams too.', href: '/en/intel-data-protection-faq', label: 'Read the data protection FAQ' },
 footage: { text: '48 hours from cameras you already have (an entrance, the checkout and one busy aisle work well), plus a photo of your floor plan. After a quick call, Stella sends you a private upload link.' },
 demo: { text: 'Pick a time that suits you. The demo takes 30 minutes: Stella shows a sample dashboard and looks at which of your cameras could work.', href: '/en/book-a-demo', label: 'Choose a time' },
@@ -98,7 +98,7 @@ else { add.push({ from: 'bot', text: "Good question. I'll pass it to Stella. Wha
 }
 renderVals() {
 const st = this.state;
-const Q = [['free', 'What do I get for free?'], ['price', 'How much does it cost?'], ['footage', 'What footage do you need?'], ['privacy', 'Is this allowed under privacy law?'], ['demo', 'Book a quick demo']];
+const Q = [['free', 'What is free?'], ['price', 'How much does it cost?'], ['footage', 'What footage do you need?'], ['privacy', 'Is this allowed under privacy law?'], ['demo', 'Book a quick demo']];
 const msgs = st.msgs.map((m) => ({ text: m.text, align: m.from === 'user' ? 'flex-end' : 'flex-start', bg: m.from === 'user' ? '#2340E8' : '#fff', fg: m.from === 'user' ? '#fff' : '#141D26', bd: m.from === 'user' ? '#2340E8' : '#E1E4DD', hasLink: !!m.href, href: m.href || '#', linkLabel: m.label || '' }));
 const send = () => { const t = (st.draft || '').trim(); if (t) this.push(t); };
 return {
